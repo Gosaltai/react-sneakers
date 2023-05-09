@@ -52,6 +52,10 @@ margin: 0;
   padding-right: 10px;
 }
 
+.btn-card {
+  cursor: pointer;
+}
+
 .content {
   padding: 40px;
 }
@@ -61,6 +65,7 @@ margin: 0;
 
 .sneakers {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .search {

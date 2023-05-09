@@ -1,20 +1,26 @@
-import styles from './Card.module.css'
-function Card(props) {
+import React from 'react';
+import styles from './Card.module.css';
+function Card({title, imageUrl, price, onFavorite, onPlus}) {
+  const [isAdded, setIsAdded] = React.useState(false);
+
+  const onClickPlus = () => {
+    onPlus({title, imageUrl, price})
+    setIsAdded(!isAdded)
+  }
+
     return  (
         <div className={styles.card}>
-        <div className={styles.favorite}>
+        <div className={styles.favorite} onClick={onFavorite}>
           <img src="/img/unelike.svg" alt="Unliked" />
         </div>
-        <img width ={133} height = {112} src={props.imageUrl} alt="" />
-        <h5>{props.title}</h5>
+        <img width ={133} height = {112} src={imageUrl} alt="" />
+        <h5>{title}</h5>
         <div className={styles.cardButton}>
           <div className={styles.cardInfo}>
             <span>Цена</span>
-            <b>{props.price} руб.</b>
+            <b>{price} руб.</b>
           </div>
-          <button className={styles.button} onClick={props.onClick}>
-            <img width={11} height={11} src="/img/plus.svg" alt="plus" />
-          </button>
+            <img className = {styles.plus} onClick = {onClickPlus} src={isAdded ? "/img/btn-checked.svg" : "/img/btn-plus.svg"} alt="plus" />
         </div>
       </div>
     )
